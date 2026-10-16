@@ -254,9 +254,18 @@ document.querySelectorAll('.contact-card').forEach(card => {
   });
 });
 
+/* ---- Dynamic Island click/tap toggle ---- */
+const dynamicIsland = document.getElementById('dynamicIsland');
+if (dynamicIsland) {
+  dynamicIsland.addEventListener('click', () => {
+    dynamicIsland.classList.toggle('active');
+  });
+}
+
 /* ---- Page load entrance ---- */
 window.addEventListener('load', () => {
   document.body.style.opacity = '0';
   document.body.style.transition = 'opacity 0.5s ease';
   requestAnimationFrame(() => { document.body.style.opacity = '1'; });
 });
+

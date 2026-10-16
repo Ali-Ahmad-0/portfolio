@@ -346,53 +346,226 @@ img { max-width: 100%; }
   0%,100% { transform: translateY(0); }
   50% { transform: translateY(-20px); }
 }
-.phone-mockup { position: relative; }
+.phone-mockup {
+  position: relative;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6));
+}
+
+/* Side physical buttons */
+.phone-btn {
+  position: absolute;
+  background: linear-gradient(to right, #2a344d, #182033);
+  border-radius: 2px;
+  z-index: 0;
+  box-shadow: -1px 0 2px rgba(0, 0, 0, 0.4);
+}
+.phone-btn-action { left: -3px; top: 90px; width: 3px; height: 22px; }
+.phone-btn-vol-up { left: -3px; top: 125px; width: 3px; height: 42px; }
+.phone-btn-vol-down { left: -3px; top: 177px; width: 3px; height: 42px; }
+.phone-btn-power { right: -3px; top: 130px; width: 3px; height: 58px; box-shadow: 1px 0 2px rgba(0, 0, 0, 0.4); }
+
 .phone-frame {
-  width: 240px;
-  height: 490px;
-  background: linear-gradient(145deg, #1e2640, #0f1525);
-  border-radius: 40px;
-  border: 2px solid rgba(139,92,246,0.4);
-  padding: 20px 14px 14px;
+  width: 250px;
+  height: 510px;
+  background: #0d121f;
+  border-radius: 46px;
+  border: 3px solid rgba(139, 92, 246, 0.4);
+  padding: 10px;
   box-shadow:
-    0 0 0 1px rgba(0,0,0,0.5),
-    0 40px 80px rgba(0,0,0,0.6),
-    inset 0 1px 0 rgba(255,255,255,0.1),
-    0 0 60px rgba(139,92,246,0.2);
+    0 0 0 1px rgba(0, 0, 0, 0.9),
+    0 35px 80px rgba(0, 0, 0, 0.7),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 50px rgba(139, 92, 246, 0.2);
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 .phone-frame::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(145deg, rgba(139,92,246,0.05), transparent 60%);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.06), transparent 50%);
   border-radius: inherit;
   pointer-events: none;
 }
-.phone-notch {
-  width: 80px; height: 22px;
-  background: var(--bg);
-  border-radius: 0 0 16px 16px;
-  margin: 0 auto 12px;
+.phone-speaker-slit {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 3.5px;
+  background: #1e263d;
+  border-radius: 4px;
+  z-index: 5;
 }
 .phone-screen {
-  background: linear-gradient(160deg, #12192e, #0a1020);
-  border-radius: 24px;
-  height: calc(100% - 34px);
-  padding: 12px 10px;
+  background: linear-gradient(165deg, #101629, #070b16);
+  border-radius: 36px;
+  height: 100%;
+  padding: 10px 11px 12px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 11px;
+  position: relative;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
+
+/* Status Bar & Dynamic Island */
 .app-status-bar {
   display: flex;
   justify-content: space-between;
-  font-size: 10px;
+  align-items: center;
+  position: relative;
+  height: 26px;
+  padding: 0 4px;
+  margin-bottom: 2px;
+  flex-shrink: 0;
+}
+.status-time {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Outfit', sans-serif;
+  letter-spacing: -0.2px;
+  z-index: 1;
+}
+.status-icons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 1;
   color: var(--text-2);
+}
+.status-signal, .status-wifi {
+  width: 12px;
+  height: 11px;
+}
+.status-battery {
+  display: flex;
+  align-items: center;
+}
+.battery-body {
+  width: 16px;
+  height: 9px;
+  border: 1.2px solid rgba(255, 255, 255, 0.65);
+  border-radius: 3px;
+  padding: 1px;
+  box-sizing: border-box;
+}
+.battery-level {
+  width: 75%;
+  height: 100%;
+  background: var(--green-l);
+  border-radius: 1px;
+}
+.battery-tip {
+  width: 1.5px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: 0 1px 1px 0;
+  margin-left: 0.5px;
+}
+
+/* Dynamic Island */
+.dynamic-island {
+  position: absolute;
+  top: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 76px;
+  height: 22px;
+  background: #000;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  box-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.12);
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+  z-index: 10;
+}
+.island-collapsed {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.island-camera {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #0a0d16;
+  border: 1px solid #1a2236;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.island-lens {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #06b6d4, #1e1b4b 70%);
+}
+.island-sensor {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #0f1524;
+}
+.island-expanded {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.island-icon {
+  font-size: 10px;
+  color: var(--cyan);
+}
+.island-text {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--purple-l);
+  letter-spacing: 0.3px;
   font-family: 'JetBrains Mono', monospace;
-  font-weight: 500;
+}
+.island-pulse-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--green);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--green);
+  animation: pulse 1.5s infinite;
+}
+.dynamic-island:hover,
+.dynamic-island.active {
+  width: 130px;
+  height: 26px;
+  top: 0px;
+  padding: 0 10px;
+  background: #000;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(139, 92, 246, 0.35);
+}
+.dynamic-island:hover .island-collapsed,
+.dynamic-island.active .island-collapsed {
+  display: none;
+}
+.dynamic-island:hover .island-expanded,
+.dynamic-island.active .island-expanded {
+  display: flex;
+}
+
+/* Home Indicator */
+.phone-home-indicator {
+  width: 82px;
+  height: 3.5px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 3px;
+  margin: auto auto 2px;
+  flex-shrink: 0;
 }
 .app-header {
   display: flex;

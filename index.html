@@ -91,13 +91,52 @@
     <!-- Phone Mockup -->
     <div class="hero-visual">
       <div class="phone-mockup">
+        <!-- Physical iPhone Buttons -->
+        <div class="phone-btn phone-btn-action"></div>
+        <div class="phone-btn phone-btn-vol-up"></div>
+        <div class="phone-btn phone-btn-vol-down"></div>
+        <div class="phone-btn phone-btn-power"></div>
+
         <div class="phone-frame">
-          <div class="phone-notch"></div>
+          <div class="phone-speaker-slit"></div>
           <div class="phone-screen">
+            <!-- Dynamic Island Status Bar -->
             <div class="app-status-bar">
-              <span>9:41</span>
-              <span class="status-icons">&#9679;&#9679;&#9679;</span>
+              <span class="status-time">9:41</span>
+              <div class="dynamic-island" id="dynamicIsland" title="Dynamic Island">
+                <div class="island-collapsed">
+                  <div class="island-camera">
+                    <div class="island-lens"></div>
+                  </div>
+                  <div class="island-sensor"></div>
+                </div>
+                <div class="island-expanded">
+                  <span class="island-icon">&#9881;</span>
+                  <span class="island-text">Flutter 3.x</span>
+                  <span class="island-pulse-dot"></span>
+                </div>
+              </div>
+              <div class="status-icons">
+                <svg class="status-signal" viewBox="0 0 24 24" fill="currentColor">
+                  <rect x="2" y="16" width="3" height="6" rx="1" />
+                  <rect x="7" y="12" width="3" height="10" rx="1" />
+                  <rect x="12" y="8" width="3" height="14" rx="1" />
+                  <rect x="17" y="4" width="3" height="18" rx="1" />
+                </svg>
+                <svg class="status-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                  <path d="M5 12.55a11 11 0 0 1 14.08 0" />
+                  <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+                  <circle cx="12" cy="19.5" r="1" fill="currentColor" />
+                </svg>
+                <div class="status-battery">
+                  <div class="battery-body">
+                    <div class="battery-level"></div>
+                  </div>
+                  <div class="battery-tip"></div>
+                </div>
+              </div>
             </div>
+
             <div class="app-header">
               <div class="app-avatar">AA</div>
               <div>
@@ -137,6 +176,9 @@
                 <div class="bar"><div class="bar-fill" style="--w:78%"></div></div>
               </div>
             </div>
+
+            <!-- Home indicator -->
+            <div class="phone-home-indicator"></div>
           </div>
         </div>
         <div class="phone-shadow"></div>
