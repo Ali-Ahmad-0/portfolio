@@ -573,16 +573,22 @@ img { max-width: 100%; }
   gap: 8px;
 }
 .app-avatar {
-  width: 32px; height: 32px;
-  background: linear-gradient(135deg, var(--purple), var(--cyan));
-  border-radius: 10px;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1.5px solid rgba(139, 92, 246, 0.6);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+  flex-shrink: 0;
+  background: #0d121f;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
-  font-weight: 700;
-  color: white;
-  flex-shrink: 0;
+}
+.app-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .app-title { font-size: 11px; font-weight: 700; color: var(--text); }
 .app-subtitle { font-size: 9px; color: var(--text-3); }
@@ -719,12 +725,118 @@ img { max-width: 100%; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* ===== ABOUT ===== */
-.about-grid {
+.about-hero-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
+  grid-template-columns: 340px 1fr;
+  gap: 3.5rem;
+  align-items: center;
+  margin-bottom: 3.5rem;
 }
+
+.about-photo-wrapper {
+  position: relative;
+}
+
+.about-photo-card {
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 35px rgba(139, 92, 246, 0.12);
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.about-photo-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(139, 92, 246, 0.45);
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.6), 0 0 45px rgba(139, 92, 246, 0.22);
+}
+
+.about-photo-frame {
+  position: relative;
+  border-radius: calc(var(--radius-lg) - 6px);
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background: #0b0f1a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.about-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-photo-card:hover .about-photo-img {
+  transform: scale(1.04);
+}
+
+.about-photo-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 20%, transparent 60%, rgba(13, 18, 31, 0.7));
+  pointer-events: none;
+}
+
+.about-photo-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(10, 14, 26, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: var(--green-l);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.about-photo-details {
+  padding-top: 1.25rem;
+  text-align: center;
+}
+
+.about-photo-name {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.3px;
+  margin-bottom: 0.2rem;
+}
+
+.about-photo-role {
+  font-size: 0.85rem;
+  color: var(--purple-l);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.about-photo-chips {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.about-photo-chips span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--text-2);
+}
+
 .about-text p {
   color: var(--text-2);
   line-height: 1.9;
@@ -750,10 +862,10 @@ img { max-width: 100%; }
 }
 .meta-item svg { width: 16px; height: 16px; color: var(--purple-l); flex-shrink: 0; }
 
-.about-cards {
+.about-cards-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
 }
 .info-card {
   border-radius: var(--radius);
@@ -856,6 +968,117 @@ img { max-width: 100%; }
   border-color: rgba(16,185,129,0.3);
 }
 .project-icon { font-size: 1.6rem; }
+.project-app-logo {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  border-radius: 10px;
+  display: block;
+}
+
+/* Project Mockup Showcase Banner */
+.project-mockup-showcase {
+  position: relative;
+  width: 100%;
+  height: 230px;
+  margin: 1.25rem 0 1.5rem;
+  border-radius: 16px;
+  background: linear-gradient(165deg, rgba(20, 27, 45, 0.7), rgba(9, 13, 23, 0.85));
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.project-mockup-showcase-green {
+  background: linear-gradient(165deg, rgba(16, 35, 30, 0.7), rgba(8, 20, 16, 0.85));
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.mockup-ambient-glow {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.35) 0%, transparent 70%);
+  filter: blur(25px);
+  pointer-events: none;
+  transition: transform 0.5s ease, background 0.5s ease;
+}
+
+.project-card:hover .mockup-ambient-glow {
+  transform: scale(1.3);
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.4) 0%, transparent 70%);
+}
+
+.mockup-ambient-glow-green {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, transparent 70%);
+}
+
+.project-card:hover .mockup-ambient-glow-green {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.45) 0%, transparent 70%);
+}
+
+.project-mockup-img {
+  position: relative;
+  z-index: 2;
+  height: 200px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.7));
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover .project-mockup-img {
+  transform: translateY(-8px) scale(1.05) rotate(-1deg);
+}
+
+/* Quran Plus Emblem Showcase */
+.quran-emblem-showcase {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 160px;
+}
+
+.quran-emblem-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 25px rgba(16, 185, 129, 0.4));
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+}
+
+.project-card:hover .quran-emblem-img {
+  transform: scale(1.1) rotate(6deg);
+}
+
+.quran-emblem-ring {
+  position: absolute;
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  border: 1px dashed rgba(16, 185, 129, 0.4);
+  animation: rotateRing 25s linear infinite;
+}
+
+.quran-emblem-ring-outer {
+  width: 155px;
+  height: 155px;
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  animation: rotateRing 35s linear infinite reverse;
+}
+
+@keyframes rotateRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 
 .proj-link {
   width: 38px; height: 38px;
@@ -1081,7 +1304,10 @@ img { max-width: 100%; }
   .hero-content { max-width: 100%; }
   .hero-badge, .hero-actions, .hero-socials { justify-content: center; }
   .hero-visual { padding-left: 0; }
-  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-hero-grid { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
+  .about-photo-wrapper { max-width: 320px; margin: 0 auto; width: 100%; }
+  .about-meta { align-items: center; }
+  .about-cards-row { grid-template-columns: repeat(2, 1fr); }
   .hero-bio { margin-left: auto; margin-right: auto; }
 }
 @media (max-width: 768px) {
@@ -1101,16 +1327,20 @@ img { max-width: 100%; }
   .nav-link { font-size: 1.4rem; }
   .hamburger { display: flex; z-index: 1000; }
   .projects-grid { grid-template-columns: 1fr; }
-  .about-cards { grid-template-columns: 1fr 1fr; }
+  .about-cards-row { grid-template-columns: 1fr 1fr; }
   .scroll-indicator { display: none; }
   .hero { padding-top: 6rem; }
   .section { padding: 5rem 1.25rem; }
+  .project-mockup-showcase { height: 200px; }
+  .project-mockup-img { height: 170px; }
 }
 @media (max-width: 480px) {
   .hero-actions { flex-direction: column; }
   .btn { justify-content: center; }
-  .about-cards { grid-template-columns: 1fr; }
-  .contact-grid { grid-template-columns: 1fr 1fr; }
+  .about-cards-row { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
   .cert-card { flex-wrap: wrap; }
   .cert-date { width: 100%; }
+  .project-mockup-showcase { height: 180px; }
+  .project-mockup-img { height: 150px; }
 }
