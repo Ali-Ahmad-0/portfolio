@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ali Ahmad Taha | Flutter Developer</title>
+  <meta name="description" content="Junior Flutter Developer & Computer Science graduate specializing in mobile app architecture, BLoC/Cubit state management, REST API integration, and clean architecture." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- PARTICLES CANVAS -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-bracket">&lt;</span>Ali<span class="logo-dot">.</span>dev<span class="logo-bracket">/&gt;</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#certifications" class="nav-link">Certifications</a></li>
+        <li><a href="#contact" class="nav-link cta-link">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-grid-lines"></div>
+    <div class="hero-glow glow-1"></div>
+    <div class="hero-glow glow-2"></div>
+    <div class="hero-glow glow-3"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span class="badge-dot"></span>
+        Available for opportunities
+      </div>
+      <h1 class="hero-name reveal">
+        <span class="hero-greeting">Hi, I'm</span>
+        <span class="name-line">Ali Ahmad<span class="accent"> Taha</span></span>
+      </h1>
+      <div class="hero-role reveal">
+        <span class="role-prefix">I build&nbsp;</span>
+        <span class="typed-wrapper">
+          <span class="typed-text" id="typedText"></span><span class="typed-cursor">|</span>
+        </span>
+      </div>
+      <p class="hero-bio reveal">
+        Junior Flutter Developer &amp; CS graduate passionate about building
+        <strong>scalable cross-platform apps</strong> with clean architecture,
+        BLoC/Cubit state management, and seamless REST API integration.
+      </p>
+      <div class="hero-actions reveal">
+        <a href="#projects" class="btn btn-primary">
+          <span>View My Work</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="Ali_Ahmad_CV (2).pdf" download class="btn btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          <span>Download CV</span>
+        </a>
+      </div>
+      <div class="hero-socials reveal">
+        <a href="https://github.com/Ali-Ahmad-0" target="_blank" class="social-link" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/ali-ahmad-33b7662aa" target="_blank" class="social-link" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="mailto:Ali.Ahmad.dev26@gmail.com" class="social-link" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Phone Mockup -->
+    <div class="hero-visual">
+      <div class="phone-mockup">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="app-status-bar">
+              <span>9:41</span>
+              <span class="status-icons">&#9679;&#9679;&#9679;</span>
+            </div>
+            <div class="app-header">
+              <div class="app-avatar">AA</div>
+              <div>
+                <div class="app-title">Flutter Dev</div>
+                <div class="app-subtitle">Ali Ahmad Taha</div>
+              </div>
+            </div>
+            <div class="app-stats">
+              <div class="stat-card">
+                <div class="stat-num">2+</div>
+                <div class="stat-lbl">Projects</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num">5</div>
+                <div class="stat-lbl">Certs</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num">4yr</div>
+                <div class="stat-lbl">Study</div>
+              </div>
+            </div>
+            <div class="app-skill-bars">
+              <div class="skill-bar-row">
+                <span>Flutter</span>
+                <div class="bar"><div class="bar-fill" style="--w:90%"></div></div>
+              </div>
+              <div class="skill-bar-row">
+                <span>BLoC/Cubit</span>
+                <div class="bar"><div class="bar-fill" style="--w:85%"></div></div>
+              </div>
+              <div class="skill-bar-row">
+                <span>REST APIs</span>
+                <div class="bar"><div class="bar-fill" style="--w:80%"></div></div>
+              </div>
+              <div class="skill-bar-row">
+                <span>Clean Arch</span>
+                <div class="bar"><div class="bar-fill" style="--w:78%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="phone-shadow"></div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">01 / About</span>
+        <h2 class="section-title">Who Am I?</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I'm <strong>Ali Ahmad Taha</strong>, a Junior Flutter Developer and Computer Science
+            graduate from Beni Suef University. I'm passionate about crafting beautiful,
+            performant, and user-friendly cross-platform mobile applications.
+          </p>
+          <p>
+            My expertise lies in <strong>Flutter &amp; Dart</strong> development, with a strong
+            understanding of clean architecture, MVVM, and BLoC/Cubit state management patterns.
+            I integrate REST APIs seamlessly using Dio and manage local data with Hive and
+            SharedPreferences.
+          </p>
+          <p>
+            I believe in writing code that is not just functional, but <strong>clean, scalable,
+            and maintainable</strong> — following SOLID principles and design patterns that
+            stand the test of time.
+          </p>
+          <div class="about-meta">
+            <div class="meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Beni Suef, Egypt</span>
+            </div>
+            <div class="meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 010 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <span>+201015023441</span>
+            </div>
+            <div class="meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="22,3 12,10 2,3"/></svg>
+              <span>Ali.Ahmad.dev26@gmail.com</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-cards reveal">
+          <div class="info-card glass">
+            <div class="card-icon">&#127891;</div>
+            <h3>Education</h3>
+            <p class="card-primary">Bachelor of Computer Science</p>
+            <p class="card-secondary">Beni Suef University · IT Dept</p>
+            <p class="card-secondary">Sept 2022 – Jul 2026</p>
+          </div>
+          <div class="info-card glass">
+            <div class="card-icon">&#128188;</div>
+            <h3>Focus Area</h3>
+            <p class="card-primary">Flutter / Mobile Dev</p>
+            <p class="card-secondary">Clean Architecture &amp; BLoC</p>
+            <p class="card-secondary">Cross-platform Apps</p>
+          </div>
+          <div class="info-card glass">
+            <div class="card-icon">&#127758;</div>
+            <h3>Languages</h3>
+            <p class="card-primary">Arabic (Native)</p>
+            <p class="card-secondary">English (Professional)</p>
+          </div>
+          <div class="info-card glass">
+            <div class="card-icon">&#128640;</div>
+            <h3>Status</h3>
+            <p class="card-primary">Open to Work</p>
+            <p class="card-secondary">Internships &amp; Junior Roles</p>
+            <p class="card-secondary">Remote / On-site</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section section-dark" id="skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">02 / Skills</span>
+        <h2 class="section-title">Tech Stack</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-category reveal">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">&#128241;</div>
+            <h3>Mobile Development</h3>
+          </div>
+          <div class="skill-chips">
+            <span class="chip chip-primary">Flutter</span>
+            <span class="chip chip-primary">Dart</span>
+            <span class="chip chip-secondary">BLoC / Cubit</span>
+            <span class="chip chip-secondary">Dio</span>
+            <span class="chip chip-secondary">REST APIs</span>
+          </div>
+        </div>
+        <div class="skill-category reveal">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">&#127963;</div>
+            <h3>Architecture</h3>
+          </div>
+          <div class="skill-chips">
+            <span class="chip chip-accent">Clean Architecture</span>
+            <span class="chip chip-accent">MVVM</span>
+            <span class="chip chip-accent">Repository Pattern</span>
+            <span class="chip chip-accent">Dependency Injection</span>
+          </div>
+        </div>
+        <div class="skill-category reveal">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">&#128190;</div>
+            <h3>Local Storage</h3>
+          </div>
+          <div class="skill-chips">
+            <span class="chip chip-secondary">SharedPreferences</span>
+            <span class="chip chip-secondary">Hive</span>
+            <span class="chip chip-secondary">Flutter Secure Storage</span>
+          </div>
+        </div>
+        <div class="skill-category reveal">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">&#128295;</div>
+            <h3>Dev Tools</h3>
+          </div>
+          <div class="skill-chips">
+            <span class="chip chip-neutral">Git</span>
+            <span class="chip chip-neutral">GitHub</span>
+            <span class="chip chip-neutral">Postman</span>
+            <span class="chip chip-neutral">Swagger</span>
+            <span class="chip chip-neutral">Android Studio</span>
+            <span class="chip chip-neutral">VS Code</span>
+            <span class="chip chip-neutral">AWS Console</span>
+            <span class="chip chip-neutral">MS SQL Server</span>
+          </div>
+        </div>
+        <div class="skill-category reveal">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">&#128161;</div>
+            <h3>CS Core</h3>
+          </div>
+          <div class="skill-chips">
+            <span class="chip chip-primary">OOP</span>
+            <span class="chip chip-primary">SOLID Principles</span>
+            <span class="chip chip-secondary">Networking</span>
+            <span class="chip chip-secondary">AWS Cloud Basics</span>
+            <span class="chip chip-secondary">Databases</span>
+            <span class="chip chip-accent">Problem Solving</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">03 / Projects</span>
+        <h2 class="section-title">Key Projects</h2>
+      </div>
+      <div class="projects-grid">
+        <!-- Examify -->
+        <div class="project-card reveal" id="project-examify">
+          <div class="project-card-inner glass">
+            <div class="project-header">
+              <div class="project-icon-wrap">
+                <div class="project-icon">&#128221;</div>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Quiz-Monitor/Mobile-App.git" target="_blank" class="proj-link" aria-label="GitHub repo">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-badge">Capstone Project</div>
+            <h3 class="project-title">Examify</h3>
+            <p class="project-desc">AI-Based Exam Management System with dual-role support for Instructors and Students, using JWT token authentication for seamless role-based navigation.</p>
+            <ul class="project-features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Dual-role system (Instructor &amp; Student) with JWT claims</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Students join via unique system-generated exam codes</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Instructors monitor performance reports &amp; results</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>View upcoming/past exams and grade checking</li>
+            </ul>
+            <div class="project-tech">
+              <span class="tech-tag">Flutter</span>
+              <span class="tech-tag">Dart</span>
+              <span class="tech-tag">JWT</span>
+              <span class="tech-tag">Figma</span>
+              <span class="tech-tag">Swagger</span>
+              <span class="tech-tag">GitHub</span>
+            </div>
+          </div>
+          <div class="project-card-glow"></div>
+        </div>
+
+        <!-- Quran Plus -->
+        <div class="project-card reveal" id="project-quran">
+          <div class="project-card-inner glass">
+            <div class="project-header">
+              <div class="project-icon-wrap project-icon-wrap-green">
+                <div class="project-icon">&#128218;</div>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Ali-Ahmad-0/My-Quran.git" target="_blank" class="proj-link" aria-label="GitHub repo">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-badge project-badge-green">Personal Project</div>
+            <h3 class="project-title">Quran Plus</h3>
+            <p class="project-desc">A beautifully crafted Flutter application for reading the Holy Quran, tracking prayer times, and reciting daily Athkar.</p>
+            <ul class="project-features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Full Quran reading with surah navigation experience</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Prayer times via API integration with city search</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Daily Athkar section for Islamic remembrance</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Dio API integration + SharedPreferences storage</li>
+            </ul>
+            <div class="project-tech">
+              <span class="tech-tag tech-tag-green">Flutter</span>
+              <span class="tech-tag tech-tag-green">Dart</span>
+              <span class="tech-tag tech-tag-green">Dio</span>
+              <span class="tech-tag tech-tag-green">BLoC</span>
+              <span class="tech-tag tech-tag-green">SharedPreferences</span>
+              <span class="tech-tag tech-tag-green">REST API</span>
+            </div>
+          </div>
+          <div class="project-card-glow project-card-glow-green"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="section section-dark" id="certifications">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">04 / Certifications</span>
+        <h2 class="section-title">Training &amp; Certs</h2>
+      </div>
+      <div class="certs-timeline">
+
+        <div class="cert-item reveal">
+          <div class="cert-line-dot"></div>
+          <div class="cert-card glass">
+            <div class="cert-emoji">&#9729;</div>
+            <div class="cert-content">
+              <span class="cert-badge cert-badge-blue">NTI</span>
+              <h3>Cloud Services Management &amp; Operation</h3>
+              <p class="cert-org">National Telecommunication Institute</p>
+            </div>
+            <span class="cert-date">Oct 2026</span>
+          </div>
+        </div>
+
+        <div class="cert-item reveal">
+          <div class="cert-line-dot"></div>
+          <div class="cert-card glass">
+            <div class="cert-emoji">&#127963;</div>
+            <div class="cert-content">
+              <span class="cert-badge cert-badge-purple">Udemy</span>
+              <h3>Deep Dive into Clean Architecture</h3>
+              <p class="cert-org">Udemy</p>
+            </div>
+            <span class="cert-date">Sep 2025</span>
+          </div>
+        </div>
+
+        <div class="cert-item reveal">
+          <div class="cert-line-dot"></div>
+          <div class="cert-card glass">
+            <div class="cert-emoji">&#128208;</div>
+            <div class="cert-content">
+              <span class="cert-badge cert-badge-purple">Udemy</span>
+              <h3>Flutter Advanced BLoC &amp; MVVM Pattern</h3>
+              <p class="cert-org">Udemy</p>
+            </div>
+            <span class="cert-date">Jul 2025</span>
+          </div>
+        </div>
+
+        <div class="cert-item reveal">
+          <div class="cert-line-dot"></div>
+          <div class="cert-card glass">
+            <div class="cert-emoji">&#128241;</div>
+            <div class="cert-content">
+              <span class="cert-badge cert-badge-purple">Udemy</span>
+              <h3>Complete Flutter &amp; Dart Development Course</h3>
+              <p class="cert-org">Udemy</p>
+            </div>
+            <span class="cert-date">Apr 2025</span>
+          </div>
+        </div>
+
+        <div class="cert-item reveal">
+          <div class="cert-line-dot"></div>
+          <div class="cert-card glass">
+            <div class="cert-emoji">&#127891;</div>
+            <div class="cert-content">
+              <span class="cert-badge cert-badge-orange">ITI</span>
+              <h3>Flutter Summer Training</h3>
+              <p class="cert-org">Information Technology Institute</p>
+            </div>
+            <span class="cert-date">Jul 2024</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">05 / Contact</span>
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="section-subtitle">Open to new opportunities, collaborations, and interesting projects.</p>
+      </div>
+      <div class="contact-grid">
+        <a href="mailto:Ali.Ahmad.dev26@gmail.com" class="contact-card reveal glass" id="contact-email">
+          <div class="contact-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="22,3 12,10 2,3"/></svg>
+          </div>
+          <h3>Email</h3>
+          <span>Ali.Ahmad.dev26@gmail.com</span>
+        </a>
+        <a href="tel:+201015023441" class="contact-card reveal glass" id="contact-phone">
+          <div class="contact-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 010 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <h3>Phone</h3>
+          <span>+20 101 502 3441</span>
+        </a>
+        <a href="https://github.com/Ali-Ahmad-0" target="_blank" class="contact-card reveal glass" id="contact-github">
+          <div class="contact-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </div>
+          <h3>GitHub</h3>
+          <span>Ali-Ahmad-0</span>
+        </a>
+        <a href="https://www.linkedin.com/in/ali-ahmad-33b7662aa" target="_blank" class="contact-card reveal glass" id="contact-linkedin">
+          <div class="contact-icon-wrap contact-icon-linkedin">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </div>
+          <h3>LinkedIn</h3>
+          <span>Ali Ahmad Taha</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <span class="logo-bracket">&lt;</span>Ali<span class="logo-dot">.</span>dev<span class="logo-bracket">/&gt;</span>
+        </div>
+        <p class="footer-copy">&#169; 2026 Ali Ahmad Taha &middot; Built with passion &amp; Flutter spirit</p>
+        <div class="footer-socials">
+          <a href="https://github.com/Ali-Ahmad-0" target="_blank" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/ali-ahmad-33b7662aa" target="_blank" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="mailto:Ali.Ahmad.dev26@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="22,3 12,10 2,3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
