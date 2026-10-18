@@ -1,28 +1,5 @@
 /* ===== PORTFOLIO SCRIPT — Ali Ahmad Taha ===== */
 
-/* ---- Custom Cursor ---- */
-const cursor = document.getElementById('cursor');
-const follower = document.getElementById('cursorFollower');
-let mx = 0, my = 0, fx = 0, fy = 0;
-
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  cursor.style.left = mx + 'px';
-  cursor.style.top  = my + 'px';
-});
-
-(function animFollower() {
-  fx += (mx - fx) * 0.12;
-  fy += (my - fy) * 0.12;
-  follower.style.left = fx + 'px';
-  follower.style.top  = fy + 'px';
-  requestAnimationFrame(animFollower);
-})();
-
-document.querySelectorAll('a, button, .chip, .info-card, .project-card, .contact-card, .cert-card').forEach(el => {
-  el.addEventListener('mouseenter', () => { cursor.classList.add('hovering'); follower.classList.add('hovering'); });
-  el.addEventListener('mouseleave', () => { cursor.classList.remove('hovering'); follower.classList.remove('hovering'); });
-});
 
 /* ---- Navbar scroll ---- */
 const navbar = document.getElementById('navbar');
@@ -101,7 +78,7 @@ let particles = [];
 const PARTICLE_COUNT = 80;
 
 function resizeCanvas() {
-  canvas.width  = window.innerWidth;
+  canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 }
 resizeCanvas();
@@ -110,12 +87,12 @@ window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
 class Particle {
   constructor() { this.reset(); }
   reset() {
-    this.x  = Math.random() * canvas.width;
-    this.y  = Math.random() * canvas.height;
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
     this.vx = (Math.random() - 0.5) * 0.4;
     this.vy = (Math.random() - 0.5) * 0.4;
-    this.r  = Math.random() * 1.8 + 0.4;
-    const colors = ['#8b5cf6','#06b6d4','#a78bfa','#67e8f9','#10b981'];
+    this.r = Math.random() * 1.8 + 0.4;
+    const colors = ['#8b5cf6', '#06b6d4', '#a78bfa', '#67e8f9', '#10b981'];
     this.color = colors[Math.floor(Math.random() * colors.length)];
     this.alpha = Math.random() * 0.6 + 0.2;
   }
@@ -215,10 +192,10 @@ document.querySelectorAll('.phone-screen').forEach(el => barObserver.observe(el)
 document.querySelectorAll('.project-card').forEach(card => {
   card.addEventListener('mousemove', e => {
     const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width  / 2;
-    const y = e.clientY - rect.top  - rect.height / 2;
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
     const rotX = (-y / rect.height * 8).toFixed(2);
-    const rotY = ( x / rect.width  * 8).toFixed(2);
+    const rotY = (x / rect.width * 8).toFixed(2);
     card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-8px)`;
   });
   card.addEventListener('mouseleave', () => {
@@ -235,8 +212,8 @@ document.querySelectorAll('.contact-card').forEach(card => {
     ripple.style.cssText = `
       position:absolute; border-radius:50%;
       width:${size}px; height:${size}px;
-      left:${e.clientX - rect.left - size/2}px;
-      top:${e.clientY - rect.top  - size/2}px;
+      left:${e.clientX - rect.left - size / 2}px;
+      top:${e.clientY - rect.top - size / 2}px;
       background:rgba(139,92,246,0.15);
       transform:scale(0); animation:rippleAnim 0.6s ease-out forwards;
       pointer-events:none; z-index:0;
@@ -448,16 +425,5 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-/* Bind custom cursor to new interactive elements */
-document.querySelectorAll('.mockup-pill-btn, .mockup-phone-wrap, .mockup-modal-close, .mockup-modal-nav, .modal-dot').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    if (cursor) cursor.classList.add('hovering');
-    if (follower) follower.classList.add('hovering');
-  });
-  el.addEventListener('mouseleave', () => {
-    if (cursor) cursor.classList.remove('hovering');
-    if (follower) follower.classList.remove('hovering');
-  });
-});
 
 
