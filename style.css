@@ -977,10 +977,11 @@ img { max-width: 100%; }
 }
 
 /* Project Mockup Showcase Banner */
+/* Project Mockup Showcase Banner */
 .project-mockup-showcase {
   position: relative;
   width: 100%;
-  height: 230px;
+  height: 255px;
   margin: 1.25rem 0 1.5rem;
   border-radius: 16px;
   background: linear-gradient(165deg, rgba(20, 27, 45, 0.7), rgba(9, 13, 23, 0.85));
@@ -999,11 +1000,11 @@ img { max-width: 100%; }
 
 .mockup-ambient-glow {
   position: absolute;
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(139, 92, 246, 0.35) 0%, transparent 70%);
-  filter: blur(25px);
+  filter: blur(28px);
   pointer-events: none;
   transition: transform 0.5s ease, background 0.5s ease;
 }
@@ -1018,21 +1019,457 @@ img { max-width: 100%; }
 }
 
 .project-card:hover .mockup-ambient-glow-green {
+  transform: scale(1.3);
   background: radial-gradient(circle, rgba(16, 185, 129, 0.45) 0%, transparent 70%);
 }
 
-.project-mockup-img {
-  position: relative;
-  z-index: 2;
-  height: 200px;
-  width: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.7));
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+/* ===== RAQEEB 3-MOCKUP SHOWCASE & STAGE ===== */
+.raqeeb-mockup-showcase {
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.75rem 0.6rem 0.5rem;
+  user-select: none;
+  background: linear-gradient(165deg, rgba(17, 24, 39, 0.85), rgba(8, 12, 22, 0.95));
 }
 
-.project-card:hover .project-mockup-img {
-  transform: translateY(-8px) scale(1.05) rotate(-1deg);
+/* Screen Selector Pills */
+.mockup-screen-nav {
+  position: relative;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(10, 14, 26, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.25rem 0.35rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.mockup-pill-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-2);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.25s ease;
+}
+
+.mockup-pill-btn .pill-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-3);
+  transition: all 0.25s ease;
+}
+
+.mockup-pill-btn:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.mockup-pill-btn.active {
+  color: #fff;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.55), rgba(6, 182, 212, 0.55));
+  border: 1px solid rgba(139, 92, 246, 0.45);
+  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.35);
+}
+
+.mockup-pill-btn.active .pill-indicator {
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+}
+
+/* 3-Mockup Stage */
+.mockup-stage {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 190px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.mockup-phone-wrap {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.35s ease,
+              filter 0.35s ease,
+              z-index 0.3s ease;
+  transform-origin: bottom center;
+  outline: none;
+}
+
+.mockup-phone-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  background: rgba(8, 12, 20, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.15rem 0.55rem;
+  border-radius: 100px;
+  margin-bottom: 0.3rem;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.mockup-phone-img {
+  height: 175px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.7));
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
+  pointer-events: none;
+}
+
+/* Default positions for 3 phones (Exams is center spotlight) */
+.mockup-phone-wrap.phone-home {
+  left: 50%;
+  transform: translateX(calc(-50% - 80px)) translateY(6px) scale(0.88) rotate(-7deg);
+  z-index: 2;
+  opacity: 0.85;
+}
+
+.mockup-phone-wrap.phone-exams {
+  left: 50%;
+  transform: translateX(-50%) translateY(-2px) scale(1.03) rotate(0deg);
+  z-index: 4;
+  opacity: 1;
+}
+
+.mockup-phone-wrap.phone-stats {
+  left: 50%;
+  transform: translateX(calc(-50% + 80px)) translateY(6px) scale(0.88) rotate(7deg);
+  z-index: 2;
+  opacity: 0.85;
+}
+
+/* Hover over project card: gentle fan spread */
+.project-card:hover .raqeeb-mockup-showcase:not([data-spotlight="home"]):not([data-spotlight="stats"]) .phone-home {
+  transform: translateX(calc(-50% - 105px)) translateY(2px) scale(0.92) rotate(-4deg);
+  opacity: 0.95;
+}
+
+.project-card:hover .raqeeb-mockup-showcase:not([data-spotlight="home"]):not([data-spotlight="stats"]) .phone-exams {
+  transform: translateX(-50%) translateY(-6px) scale(1.06) rotate(0deg);
+}
+
+.project-card:hover .raqeeb-mockup-showcase:not([data-spotlight="home"]):not([data-spotlight="stats"]) .phone-stats {
+  transform: translateX(calc(-50% + 105px)) translateY(2px) scale(0.92) rotate(4deg);
+  opacity: 0.95;
+}
+
+/* Phone hover micro-interaction */
+.mockup-phone-wrap:hover {
+  z-index: 10 !important;
+  opacity: 1 !important;
+}
+
+.mockup-phone-wrap:hover .mockup-phone-tag,
+.mockup-phone-wrap.is-spotlight .mockup-phone-tag {
+  opacity: 1;
+  transform: translateY(0);
+  color: var(--cyan-l);
+  border-color: rgba(6, 182, 212, 0.4);
+  background: rgba(6, 182, 212, 0.15);
+}
+
+.mockup-phone-wrap:hover .mockup-phone-img,
+.mockup-phone-wrap.is-spotlight .mockup-phone-img {
+  filter: drop-shadow(0 20px 35px rgba(139, 92, 246, 0.6)) brightness(1.04);
+}
+
+/* Spotlighted States */
+.raqeeb-mockup-showcase[data-spotlight="home"] .phone-home {
+  transform: translateX(-50%) translateY(-6px) scale(1.08) rotate(0deg) !important;
+  z-index: 10;
+  opacity: 1;
+}
+.raqeeb-mockup-showcase[data-spotlight="home"] .phone-exams {
+  transform: translateX(calc(-50% + 75px)) translateY(6px) scale(0.86) rotate(6deg) !important;
+  z-index: 2;
+  opacity: 0.68;
+}
+.raqeeb-mockup-showcase[data-spotlight="home"] .phone-stats {
+  transform: translateX(calc(-50% + 135px)) translateY(12px) scale(0.78) rotate(11deg) !important;
+  z-index: 1;
+  opacity: 0.45;
+}
+
+.raqeeb-mockup-showcase[data-spotlight="exams"] .phone-exams {
+  transform: translateX(-50%) translateY(-6px) scale(1.06) rotate(0deg) !important;
+  z-index: 10;
+  opacity: 1;
+}
+.raqeeb-mockup-showcase[data-spotlight="exams"] .phone-home {
+  transform: translateX(calc(-50% - 85px)) translateY(6px) scale(0.88) rotate(-7deg) !important;
+  z-index: 2;
+  opacity: 0.85;
+}
+.raqeeb-mockup-showcase[data-spotlight="exams"] .phone-stats {
+  transform: translateX(calc(-50% + 85px)) translateY(6px) scale(0.88) rotate(7deg) !important;
+  z-index: 2;
+  opacity: 0.85;
+}
+
+.raqeeb-mockup-showcase[data-spotlight="stats"] .phone-stats {
+  transform: translateX(-50%) translateY(-6px) scale(1.08) rotate(0deg) !important;
+  z-index: 10;
+  opacity: 1;
+}
+.raqeeb-mockup-showcase[data-spotlight="stats"] .phone-exams {
+  transform: translateX(calc(-50% - 75px)) translateY(6px) scale(0.86) rotate(-6deg) !important;
+  z-index: 2;
+  opacity: 0.68;
+}
+.raqeeb-mockup-showcase[data-spotlight="stats"] .phone-home {
+  transform: translateX(calc(-50% - 135px)) translateY(12px) scale(0.78) rotate(-11deg) !important;
+  z-index: 1;
+  opacity: 0.45;
+}
+
+/* Expand hint badge */
+.mockup-expand-hint {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.65rem;
+  color: var(--text-3);
+  background: rgba(8, 12, 20, 0.75);
+  backdrop-filter: blur(8px);
+  padding: 0.2rem 0.55rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.mockup-expand-hint svg {
+  width: 11px;
+  height: 11px;
+  color: var(--purple-l);
+}
+
+.project-card:hover .mockup-expand-hint {
+  opacity: 1;
+  color: var(--text-2);
+}
+
+/* ===== MOCKUP LIGHTBOX MODAL ===== */
+.mockup-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 1.5rem;
+}
+
+.mockup-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mockup-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 8, 15, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.mockup-modal-container {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  width: 100%;
+  background: linear-gradient(165deg, rgba(20, 27, 45, 0.95), rgba(9, 13, 23, 0.98));
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2rem;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), 0 0 50px rgba(139, 92, 246, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.92) translateY(20px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mockup-modal.active .mockup-modal-container {
+  transform: scale(1) translateY(0);
+}
+
+.mockup-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  z-index: 10;
+}
+
+.mockup-modal-close:hover {
+  background: rgba(236, 72, 153, 0.2);
+  border-color: var(--pink);
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+.mockup-modal-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.mockup-modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  z-index: 10;
+}
+
+.mockup-modal-nav:hover {
+  background: rgba(139, 92, 246, 0.3);
+  border-color: var(--purple-l);
+  color: #fff;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.mockup-modal-nav svg {
+  width: 20px;
+  height: 20px;
+}
+
+.modal-nav-prev { left: -22px; }
+.modal-nav-next { right: -22px; }
+
+.mockup-modal-content {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+}
+
+.mockup-modal-img-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.mockup-modal-img {
+  max-height: 360px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
+  border-radius: 14px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.mockup-modal-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mockup-modal-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cyan-l);
+  background: rgba(6, 182, 212, 0.15);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 100px;
+}
+
+.mockup-modal-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.4px;
+}
+
+.mockup-modal-desc {
+  font-size: 0.95rem;
+  color: var(--text-2);
+  line-height: 1.7;
+}
+
+.mockup-modal-dots {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.modal-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.modal-dot.active {
+  width: 22px;
+  border-radius: 100px;
+  background: var(--purple-l);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.6);
 }
 
 /* Quran Plus Emblem Showcase */
@@ -1331,8 +1768,31 @@ img { max-width: 100%; }
   .scroll-indicator { display: none; }
   .hero { padding-top: 6rem; }
   .section { padding: 5rem 1.25rem; }
-  .project-mockup-showcase { height: 200px; }
-  .project-mockup-img { height: 170px; }
+  .project-mockup-showcase { height: 235px; }
+  .raqeeb-mockup-showcase { height: 245px; padding: 0.6rem 0.4rem 0.4rem; }
+  .mockup-stage { height: 175px; }
+  .mockup-phone-img { height: 155px; }
+  .mockup-phone-wrap.phone-home { transform: translateX(calc(-50% - 65px)) translateY(5px) scale(0.86) rotate(-6deg); }
+  .mockup-phone-wrap.phone-exams { transform: translateX(-50%) translateY(-2px) scale(1.02) rotate(0deg); }
+  .mockup-phone-wrap.phone-stats { transform: translateX(calc(-50% + 65px)) translateY(5px) scale(0.86) rotate(6deg); }
+  
+  .project-card:hover .raqeeb-mockup-showcase:not([data-spotlight="home"]):not([data-spotlight="stats"]) .phone-home { transform: translateX(calc(-50% - 85px)) translateY(2px) scale(0.9) rotate(-3deg); }
+  .project-card:hover .raqeeb-mockup-showcase:not([data-spotlight="home"]):not([data-spotlight="stats"]) .phone-stats { transform: translateX(calc(-50% + 85px)) translateY(2px) scale(0.9) rotate(3deg); }
+
+  .raqeeb-mockup-showcase[data-spotlight="home"] .phone-home { transform: translateX(-50%) translateY(-4px) scale(1.06) rotate(0deg) !important; }
+  .raqeeb-mockup-showcase[data-spotlight="home"] .phone-exams { transform: translateX(calc(-50% + 65px)) translateY(5px) scale(0.84) rotate(5deg) !important; }
+  .raqeeb-mockup-showcase[data-spotlight="home"] .phone-stats { transform: translateX(calc(-50% + 115px)) translateY(10px) scale(0.76) rotate(9deg) !important; }
+
+  .raqeeb-mockup-showcase[data-spotlight="stats"] .phone-stats { transform: translateX(-50%) translateY(-4px) scale(1.06) rotate(0deg) !important; }
+  .raqeeb-mockup-showcase[data-spotlight="stats"] .phone-exams { transform: translateX(calc(-50% - 65px)) translateY(5px) scale(0.84) rotate(-5deg) !important; }
+  .raqeeb-mockup-showcase[data-spotlight="stats"] .phone-home { transform: translateX(calc(-50% - 115px)) translateY(10px) scale(0.76) rotate(-9deg) !important; }
+
+  .mockup-modal-content { grid-template-columns: 1fr; text-align: center; gap: 1.25rem; }
+  .mockup-modal-badge { align-self: center; }
+  .mockup-modal-dots { justify-content: center; }
+  .mockup-modal-img { max-height: 280px; }
+  .modal-nav-prev { left: 6px; }
+  .modal-nav-next { right: 6px; }
 }
 @media (max-width: 480px) {
   .hero-actions { flex-direction: column; }
@@ -1341,6 +1801,23 @@ img { max-width: 100%; }
   .contact-grid { grid-template-columns: 1fr; }
   .cert-card { flex-wrap: wrap; }
   .cert-date { width: 100%; }
-  .project-mockup-showcase { height: 180px; }
-  .project-mockup-img { height: 150px; }
+  .project-mockup-showcase { height: 220px; }
+  .raqeeb-mockup-showcase { height: 230px; }
+  .mockup-stage { height: 160px; }
+  .mockup-phone-img { height: 140px; }
+  .mockup-phone-wrap.phone-home { transform: translateX(calc(-50% - 50px)) translateY(4px) scale(0.84) rotate(-5deg); }
+  .mockup-phone-wrap.phone-exams { transform: translateX(-50%) translateY(-2px) scale(1) rotate(0deg); }
+  .mockup-phone-wrap.phone-stats { transform: translateX(calc(-50% + 50px)) translateY(4px) scale(0.84) rotate(5deg); }
+
+  .raqeeb-mockup-showcase[data-spotlight="home"] .phone-home { transform: translateX(-50%) translateY(-4px) scale(1.04) rotate(0deg) !important; }
+  .raqeeb-mockup-showcase[data-spotlight="home"] .phone-exams { transform: translateX(calc(-50% + 50px)) translateY(4px) scale(0.82) rotate(4deg) !important; }
+  .raqeeb-mockup-showcase[data-spotlight="home"] .phone-stats { transform: translateX(calc(-50% + 95px)) translateY(8px) scale(0.74) rotate(7deg) !important; }
+
+  .raqeeb-mockup-showcase[data-spotlight="stats"] .phone-stats { transform: translateX(-50%) translateY(-4px) scale(1.04) rotate(0deg) !important; }
+  .raqeeb-mockup-showcase[data-spotlight="stats"] .phone-exams { transform: translateX(calc(-50% - 50px)) translateY(4px) scale(0.82) rotate(-4deg) !important; }
+  .raqeeb-mockup-showcase[data-spotlight="stats"] .phone-home { transform: translateX(calc(-50% - 95px)) translateY(8px) scale(0.74) rotate(-7deg) !important; }
+
+  .mockup-expand-hint { display: none; }
+  .mockup-modal-container { padding: 1.75rem 1.25rem; }
+  .mockup-modal-img { max-height: 230px; }
 }

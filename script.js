@@ -269,3 +269,195 @@ window.addEventListener('load', () => {
   requestAnimationFrame(() => { document.body.style.opacity = '1'; });
 });
 
+/* ---- Raqeeb 3-Mockup Interactive Showcase & Lightbox Modal ---- */
+const mockupData = {
+  home: {
+    src: 'images/raqeeb_home.png',
+    badge: 'Student Portal • Live Countdown',
+    title: 'Upcoming Exams Dashboard',
+    desc: 'Student dashboard with real-time countdown timers for scheduled exams, live session indicators, quick exam code joining, and intuitive bottom navigation.'
+  },
+  exams: {
+    src: 'images/raqeeb_exams.png',
+    badge: 'Exam Catalog • Status Tracker',
+    title: 'Active & Completed Exams',
+    desc: 'Filterable exam catalogue organized by All, Live, Upcoming, and Completed with live attendance counts, duration details, and immediate average score feedback.'
+  },
+  stats: {
+    src: 'images/raqeeb_stats.png',
+    badge: 'Instructor Portal • AI Proctoring',
+    title: 'Proctoring & Score Analytics',
+    desc: 'Detailed exam performance reports featuring AI proctoring flag tallies, overall class average scores, grade distribution bar charts, and individual student results.'
+  }
+};
+
+const mockupKeys = ['home', 'exams', 'stats'];
+let activeMockupIndex = 1; // Default to 'exams' (center phone)
+
+const raqeebShowcase = document.getElementById('raqeebShowcase');
+const mockupPillBtns = document.querySelectorAll('.mockup-pill-btn');
+const mockupPhoneWraps = document.querySelectorAll('.mockup-phone-wrap');
+
+function updateMockupSpotlight(key) {
+  if (!raqeebShowcase) return;
+  raqeebShowcase.setAttribute('data-spotlight', key);
+
+  mockupPillBtns.forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-mockup') === key);
+  });
+
+  mockupPhoneWraps.forEach(wrap => {
+    wrap.classList.toggle('is-spotlight', wrap.getAttribute('data-mockup') === key);
+  });
+
+  const idx = mockupKeys.indexOf(key);
+  if (idx !== -1) activeMockupIndex = idx;
+}
+
+mockupPillBtns.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const key = btn.getAttribute('data-mockup');
+    updateMockupSpotlight(key);
+  });
+});
+
+mockupPhoneWraps.forEach(wrap => {
+  wrap.addEventListener('mouseenter', () => {
+    const key = wrap.getAttribute('data-mockup');
+    updateMockupSpotlight(key);
+  });
+
+  wrap.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const key = wrap.getAttribute('data-mockup');
+    openMockupModal(key);
+  });
+
+  wrap.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      const key = wrap.getAttribute('data-mockup');
+      openMockupModal(key);
+    }
+  });
+});
+
+/* Lightbox Modal */
+const modal = document.getElementById('mockupModal');
+const modalBackdrop = document.getElementById('mockupModalBackdrop');
+const modalClose = document.getElementById('mockupModalClose');
+const modalPrev = document.getElementById('modalNavPrev');
+const modalNext = document.getElementById('modalNavNext');
+const modalImg = document.getElementById('modalImg');
+const modalBadge = document.getElementById('modalBadge');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+const modalDots = document.getElementById('modalDots');
+
+function initModalDots() {
+  if (!modalDots) return;
+  modalDots.innerHTML = '';
+  mockupKeys.forEach((key, idx) => {
+    const dot = document.createElement('span');
+    dot.className = 'modal-dot' + (idx === activeMockupIndex ? ' active' : '');
+    dot.setAttribute('role', 'button');
+    dot.setAttribute('aria-label', `View ${key} mockup`);
+    dot.addEventListener('click', () => {
+      activeMockupIndex = idx;
+      renderModalContent();
+    });
+    modalDots.appendChild(dot);
+  });
+}
+
+function renderModalContent() {
+  const key = mockupKeys[activeMockupIndex];
+  const data = mockupData[key];
+  if (!data || !modalImg) return;
+
+  modalImg.style.opacity = '0';
+  modalImg.style.transform = 'scale(0.96)';
+
+  setTimeout(() => {
+    modalImg.src = data.src;
+    modalImg.alt = data.title;
+    if (modalBadge) modalBadge.textContent = data.badge;
+    if (modalTitle) modalTitle.textContent = data.title;
+    if (modalDesc) modalDesc.textContent = data.desc;
+
+    if (modalDots) {
+      modalDots.querySelectorAll('.modal-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === activeMockupIndex);
+      });
+    }
+
+    modalImg.style.opacity = '1';
+    modalImg.style.transform = 'scale(1)';
+  }, 100);
+
+  updateMockupSpotlight(key);
+}
+
+function openMockupModal(key) {
+  const idx = mockupKeys.indexOf(key);
+  if (idx !== -1) activeMockupIndex = idx;
+  initModalDots();
+  renderModalContent();
+  if (modal) {
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+  }
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMockupModal() {
+  if (!modal) return;
+  modal.classList.remove('active');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+if (modalClose) modalClose.addEventListener('click', closeMockupModal);
+if (modalBackdrop) modalBackdrop.addEventListener('click', closeMockupModal);
+
+if (modalPrev) {
+  modalPrev.addEventListener('click', () => {
+    activeMockupIndex = (activeMockupIndex - 1 + mockupKeys.length) % mockupKeys.length;
+    renderModalContent();
+  });
+}
+
+if (modalNext) {
+  modalNext.addEventListener('click', () => {
+    activeMockupIndex = (activeMockupIndex + 1) % mockupKeys.length;
+    renderModalContent();
+  });
+}
+
+document.addEventListener('keydown', (e) => {
+  if (!modal || !modal.classList.contains('active')) return;
+  if (e.key === 'Escape') closeMockupModal();
+  if (e.key === 'ArrowLeft') {
+    activeMockupIndex = (activeMockupIndex - 1 + mockupKeys.length) % mockupKeys.length;
+    renderModalContent();
+  }
+  if (e.key === 'ArrowRight') {
+    activeMockupIndex = (activeMockupIndex + 1) % mockupKeys.length;
+    renderModalContent();
+  }
+});
+
+/* Bind custom cursor to new interactive elements */
+document.querySelectorAll('.mockup-pill-btn, .mockup-phone-wrap, .mockup-modal-close, .mockup-modal-nav, .modal-dot').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    if (cursor) cursor.classList.add('hovering');
+    if (follower) follower.classList.add('hovering');
+  });
+  el.addEventListener('mouseleave', () => {
+    if (cursor) cursor.classList.remove('hovering');
+    if (follower) follower.classList.remove('hovering');
+  });
+});
+
+
